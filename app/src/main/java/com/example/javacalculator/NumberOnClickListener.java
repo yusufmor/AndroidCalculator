@@ -5,7 +5,7 @@ import android.widget.EditText;
 
 public class NumberOnClickListener implements View.OnClickListener {
     private final int number;
-    private EditText editText
+    private EditText editText;
 
     public NumberOnClickListener(int number_ , EditText editText_) {
         number = number_;

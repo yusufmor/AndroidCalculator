@@ -82,6 +82,6 @@ public class MainActivity extends AppCompatActivity {
         button_there.setOnClickListener(new NumberOnClickListener(3 , editText));
         button_zero.setOnClickListener(new NumberOnClickListener(0 , editText));
 
-        
+
     }
 }
