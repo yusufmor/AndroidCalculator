@@ -50,6 +50,11 @@ public class NumberOnClickListener implements View.OnClickListener {
                     Integer.toString(number)
             );
             return;
+        } else if (mathText.equals(")")) {
+            editText.setText(
+                    mathText + "×" + String.valueOf(number)
+            );
+
         } else {
             a = "else";
             editText.setText(
