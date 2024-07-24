@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">javaCalculator</string>
+    <string name="appTitle">Java With Calculator</string>
+    <string name="remove">C</string>
 </resources>
