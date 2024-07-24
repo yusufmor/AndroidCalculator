@@ -83,5 +83,14 @@ public class MainActivity extends AppCompatActivity {
         button_zero.setOnClickListener(new NumberOnClickListener(0 , editText));
 
 
+        // Set Sembole OnClickListener
+
+        button_yuzde.setOnClickListener(new SemboleOnClickListener("%" , editText));
+        button_bolme.setOnClickListener(new SemboleOnClickListener("÷" , editText));
+        button_carp.setOnClickListener(new SemboleOnClickListener("×" , editText));
+        button_eksi.setOnClickListener(new SemboleOnClickListener("-" , editText));
+        button_plus.setOnClickListener(new SemboleOnClickListener("+" , editText));
+
+
     }
 }
