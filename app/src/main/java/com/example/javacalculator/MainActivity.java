@@ -1,6 +1,7 @@
 package com.example.javacalculator;
 
 import android.os.Bundle;
+import android.renderscript.Script;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -10,10 +11,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.udojava.evalex.Expression;
+
 import java.lang.reflect.Parameter;
 import java.util.LinkedList;
 import java.util.Queue;
-
 public class MainActivity extends AppCompatActivity {
 
 
@@ -77,35 +79,48 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
 
         // Set number OnClickListener
-        button_seven.setOnClickListener(new NumberOnClickListener("7" , editText));
-        button_eight.setOnClickListener(new NumberOnClickListener("8" , editText));
-        button_nine.setOnClickListener(new NumberOnClickListener("9" , editText));
-        button_four.setOnClickListener(new NumberOnClickListener("4" , editText));
-        button_five.setOnClickListener(new NumberOnClickListener("5" , editText));
-        button_six.setOnClickListener(new NumberOnClickListener("6" , editText));
-        button_one.setOnClickListener(new NumberOnClickListener("1" , editText));
-        button_two.setOnClickListener(new NumberOnClickListener("2" , editText));
-        button_there.setOnClickListener(new NumberOnClickListener("3" , editText));
-        button_zero.setOnClickListener(new NumberOnClickListener("0" , editText));
-        button_negative.setOnClickListener(new NumberOnClickListener("-"  , editText));
+        button_seven.setOnClickListener(new NumberOnClickListener("7", editText));
+        button_eight.setOnClickListener(new NumberOnClickListener("8", editText));
+        button_nine.setOnClickListener(new NumberOnClickListener("9", editText));
+        button_four.setOnClickListener(new NumberOnClickListener("4", editText));
+        button_five.setOnClickListener(new NumberOnClickListener("5", editText));
+        button_six.setOnClickListener(new NumberOnClickListener("6", editText));
+        button_one.setOnClickListener(new NumberOnClickListener("1", editText));
+        button_two.setOnClickListener(new NumberOnClickListener("2", editText));
+        button_there.setOnClickListener(new NumberOnClickListener("3", editText));
+        button_zero.setOnClickListener(new NumberOnClickListener("0", editText));
+        button_negative.setOnClickListener(new NumberOnClickListener("-", editText));
 
         // Set Sembole OnClickListener
 
-        button_yuzde.setOnClickListener(new SemboleOnClickListener("%" , editText));
-        button_bolme.setOnClickListener(new SemboleOnClickListener("÷" , editText));
-        button_carp.setOnClickListener(new SemboleOnClickListener("×" , editText));
-        button_eksi.setOnClickListener(new SemboleOnClickListener("-" , editText));
-        button_plus.setOnClickListener(new SemboleOnClickListener("+" , editText));
+        button_yuzde.setOnClickListener(new SemboleOnClickListener("%", editText));
+        button_bolme.setOnClickListener(new SemboleOnClickListener("÷", editText));
+        button_carp.setOnClickListener(new SemboleOnClickListener("×", editText));
+        button_eksi.setOnClickListener(new SemboleOnClickListener("-", editText));
+        button_plus.setOnClickListener(new SemboleOnClickListener("+", editText));
 
 
         // Others OnClickListeners
 
-        button_parantez.setOnClickListener(new ParantezOnClickListener(editText , queue));
+        button_parantez.setOnClickListener(new ParantezOnClickListener(editText, queue));
         button_remove.setOnClickListener(d -> {
             editText.setText("");
             queue = new LinkedList<>();
         });
-        button_virgul.setOnClickListener(new DotOnClickListener("." , editText));
+        button_virgul.setOnClickListener(new DotOnClickListener(".", editText));
 
+        button_equals.setOnClickListener(v -> {
+            if (editText.getText().toString() == null) {
+                editText.setText("");
+            }
+            String mathText = editText.getText().toString();
+
+            mathText.replace("×", "*");
+            mathText.replace("÷", "/");
+
+            Expression mathExpression = new Expression(mathText);
+            String rs = mathExpression.eval().toString();
+            editText.setText(rs);
+        });
     }
 }
