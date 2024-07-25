@@ -106,22 +106,26 @@ public class MainActivity extends AppCompatActivity {
         button_parantez.setOnClickListener(new ParantezOnClickListener(editText, queue));
         button_remove.setOnClickListener(d -> {
             editText.setText("");
-            queue = new LinkedList<>();
+            queue.clear();
         });
         button_virgul.setOnClickListener(new DotOnClickListener(".", editText));
 
         button_equals.setOnClickListener(v -> {
             if (editText.getText().toString() == null) {
-                editText.setText("");
+                editText.setText(null);
             }
             String mathText = editText.getText().toString();
 
-            mathText.replace("×", "*");
-            mathText.replace("÷", "/");
+            mathText = mathText.replace("×", "*");
+            mathText = mathText.replace("÷", "/");
+            try {
 
-            Expression mathExpression = new Expression(mathText);
-            String rs = mathExpression.eval().toString();
-            editText.setText(rs);
+                Expression mathExpression = new Expression(mathText);
+                String rs = mathExpression.eval().toString();
+                editText.setText(rs);
+            } catch (Exception ex) {
+                editText.setText(null);
+            }
         });
     }
 }

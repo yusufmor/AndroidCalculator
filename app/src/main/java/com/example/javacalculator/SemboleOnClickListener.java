@@ -10,7 +10,7 @@ public class SemboleOnClickListener implements View.OnClickListener {
 
     private final String sembole;
     private final TextView editText;
-    protected  List<String> numbers = List.of("1" ,"2" , "3" ,"4"," 5" ,"6" ,"7" ,"8" ,"9" ,"0" ,")");
+    protected  List<String> numbers = List.of("1" ,"2" , "3" ,"4","5" ,"6" ,"7" ,"8" ,"9" ,"0" ,")");
 
     public SemboleOnClickListener(String sembole, TextView editText) {
         this.sembole = sembole;
@@ -26,7 +26,8 @@ public class SemboleOnClickListener implements View.OnClickListener {
         }
 
         String mathText = editText.getText().toString();
-
+        System.out.println(mathText);
+        System.out.println(mathText.endsWith("5"));
         for (String number : numbers) {
             if (mathText.endsWith(number)) {
                 editText.setText(
