@@ -25,7 +25,7 @@ public class NumberOnClickListener implements View.OnClickListener {
             editText.setText("");
         }
 
-        Pattern pattern = Pattern.compile("([-+%÷×\\(\\)]0||^0$)$" ,  Pattern.UNICODE_CASE);
+        Pattern pattern = Pattern.compile("([-+%÷×\\(\\)]0||^0$)$" ,  Pattern.UNIX_LINES);
         String mathText = editText.getText().toString();
         Matcher m = pattern.matcher(mathText);
 
@@ -33,34 +33,21 @@ public class NumberOnClickListener implements View.OnClickListener {
 
         System.out.println(mathText);
         boolean value  = m.find();
-        System.out.println(value);
-        String a = "";
-
+        System.out.println(mathText.endsWith(")"));
+        value = mathText.endsWith(")");
 
         if (m.find() && mathText.length() > 0) {
             String format = mathText.substring(0, mathText.length() - 1) + String.valueOf(number);
-            a = "if";
-            editText.setText(
-                    format
-            );
-            return;
+            editText.setText(format);
+
         } else if (m.find()) {
-            a = "elsif";
-            editText.setText(
-                    String.valueOf(number)
-            );
-            return;
-        } else if (mathText.equals(")")) {
-            editText.setText(
-                    mathText + "×" + String.valueOf(number)
-            );
+            editText.setText(mathText + String.valueOf(number));
+
+        } else if (mathText.endsWith(")")) {
+            editText.setText(mathText + "×" + String.valueOf(number));
 
         } else {
-            a = "else";
-            editText.setText(
-                    mathText + String.valueOf(number)
-            );
+            editText.setText(mathText + String.valueOf(number));
         }
-        System.out.println(a);
     }
 }

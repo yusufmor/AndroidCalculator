@@ -35,7 +35,7 @@ public class ParantezOnClickListener implements View.OnClickListener{
                 parantezQueue.remove();
                 return;
             } else if (mathText.endsWith(number)) {
-                editText.setText(mathText + "(");
+                editText.setText(mathText + "×(");
                 parantezQueue.add(new Parantez());
             }
         }
