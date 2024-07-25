@@ -10,6 +10,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.lang.reflect.Parameter;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button_equals;
 
     private EditText editText;
+    private Queue<Parantez> queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        queue = new LinkedList<>();
 
         button_remove = findViewById(R.id.button_remove);
         button_parantez = findViewById(R.id.button_parantez);
@@ -71,17 +77,17 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
 
         // Set number OnClickListener
-        button_seven.setOnClickListener(new NumberOnClickListener(7 , editText));
-        button_eight.setOnClickListener(new NumberOnClickListener(8 , editText));
-        button_nine.setOnClickListener(new NumberOnClickListener(9 , editText));
-        button_four.setOnClickListener(new NumberOnClickListener(4 , editText));
-        button_five.setOnClickListener(new NumberOnClickListener(5 , editText));
-        button_six.setOnClickListener(new NumberOnClickListener(6 , editText));
-        button_one.setOnClickListener(new NumberOnClickListener(1 , editText));
-        button_two.setOnClickListener(new NumberOnClickListener(2 , editText));
-        button_there.setOnClickListener(new NumberOnClickListener(3 , editText));
-        button_zero.setOnClickListener(new NumberOnClickListener(0 , editText));
-
+        button_seven.setOnClickListener(new NumberOnClickListener("7" , editText));
+        button_eight.setOnClickListener(new NumberOnClickListener("8" , editText));
+        button_nine.setOnClickListener(new NumberOnClickListener("9" , editText));
+        button_four.setOnClickListener(new NumberOnClickListener("4" , editText));
+        button_five.setOnClickListener(new NumberOnClickListener("5" , editText));
+        button_six.setOnClickListener(new NumberOnClickListener("6" , editText));
+        button_one.setOnClickListener(new NumberOnClickListener("1" , editText));
+        button_two.setOnClickListener(new NumberOnClickListener("2" , editText));
+        button_there.setOnClickListener(new NumberOnClickListener("3" , editText));
+        button_zero.setOnClickListener(new NumberOnClickListener("0" , editText));
+        button_negative.setOnClickListener(new NumberOnClickListener("-"  , editText));
 
         // Set Sembole OnClickListener
 
@@ -91,6 +97,15 @@ public class MainActivity extends AppCompatActivity {
         button_eksi.setOnClickListener(new SemboleOnClickListener("-" , editText));
         button_plus.setOnClickListener(new SemboleOnClickListener("+" , editText));
 
+
+        // Others OnClickListeners
+
+        button_parantez.setOnClickListener(new ParantezOnClickListener(editText , queue));
+        button_remove.setOnClickListener(d -> {
+            editText.setText("");
+            queue = new LinkedList<>();
+        });
+        button_virgul.setOnClickListener(new DotOnClickListener("." , editText));
 
     }
 }

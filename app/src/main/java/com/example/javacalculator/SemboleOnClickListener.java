@@ -9,7 +9,7 @@ public class SemboleOnClickListener implements View.OnClickListener {
 
     private final String sembole;
     private final EditText editText;
-    private final List<String> numbers = List.of("1" ,"2" , "3" ,"4"," 5" ,"6" ,"7" ,"8" ,"9" ,"0" ,")");
+    protected  List<String> numbers = List.of("1" ,"2" , "3" ,"4"," 5" ,"6" ,"7" ,"8" ,"9" ,"0" ,")");
 
     public SemboleOnClickListener(String sembole, EditText editText) {
         this.sembole = sembole;
