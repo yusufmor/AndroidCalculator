@@ -2,16 +2,17 @@ package com.example.javacalculator;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.List;
 
 public class SemboleOnClickListener implements View.OnClickListener {
 
     private final String sembole;
-    private final EditText editText;
+    private final TextView editText;
     protected  List<String> numbers = List.of("1" ,"2" , "3" ,"4"," 5" ,"6" ,"7" ,"8" ,"9" ,"0" ,")");
 
-    public SemboleOnClickListener(String sembole, EditText editText) {
+    public SemboleOnClickListener(String sembole, TextView editText) {
         this.sembole = sembole;
         this.editText = editText;
     }

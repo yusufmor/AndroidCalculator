@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.renderscript.Script;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button_virgul;
     private Button button_equals;
 
-    private EditText editText;
+    private TextView editText;
     private Queue<Parantez> queue;
 
     @Override
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         button_virgul = findViewById(R.id.button_virgul);
         button_equals = findViewById(R.id.button_equals);
 
-        editText = findViewById(R.id.editText);
+        editText = findViewById(R.id.textView);
 
         // Set number OnClickListener
         button_seven.setOnClickListener(new NumberOnClickListener("7", editText));

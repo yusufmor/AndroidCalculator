@@ -2,6 +2,7 @@ package com.example.javacalculator;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,13 +12,13 @@ import java.util.Queue;
 
 public class ParantezOnClickListener implements View.OnClickListener{
 
-    private final EditText editText;
+    private final TextView editText;
     private final Queue<Parantez> parantezQueue;
     private final List<String> numbers = List.of("1" ,"2" , "3" ,"4"," 5" ,"6" ,"7" ,"8" ,"9" ,"0" , ")");
     private final List<String> semboles = List.of("+" ,"-" ,"%" ,"÷" , "×");
 
 
-    public ParantezOnClickListener(EditText editText, Queue<Parantez> parantezQueue) {
+    public ParantezOnClickListener(TextView editText, Queue<Parantez> parantezQueue) {
         this.editText = editText;
         this.parantezQueue = parantezQueue;
     }

@@ -2,6 +2,7 @@ package com.example.javacalculator;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,10 +11,10 @@ import java.util.regex.Pattern;
 
 public class NumberOnClickListener implements View.OnClickListener {
     private final String number;
-    private final EditText editText;
+    private final TextView editText;
     private final List<String> semboles = Arrays.asList("+" , "-" ,"%" , "÷" ,"(" , ")" , "×");
 
-    public NumberOnClickListener(String number_ , EditText editText_) {
+    public NumberOnClickListener(String number_ , TextView editText_) {
         number = number_;
         editText = editText_;
     }
